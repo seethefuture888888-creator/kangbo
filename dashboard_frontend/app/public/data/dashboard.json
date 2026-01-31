@@ -1,0 +1,450 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-01-31T07:19:22Z",
+  "dailySignal": {
+    "date": "2026-01-31",
+    "regime": "A",
+    "riskScore": 27.8,
+    "drivers": [
+      "HY利差回落",
+      "实际利率下行",
+      "美元走弱"
+    ],
+    "portfolioAction": "ADD",
+    "riskMode": "进攻",
+    "aiDiffusionIndex": 57.992,
+    "constraintIndex": 22.240000000000002,
+    "commentSummary": "Regime A, RiskScore 28. HY利差回落; 实际利率下行; 美元走弱.",
+    "dataAsOf": "2026-01-31 07:19 UTC"
+  },
+  "macroSwitches": [
+    {
+      "id": "HY_SPREAD",
+      "name": "HY Credit Spread",
+      "currentValue": 2.77,
+      "change7d": 0.09,
+      "change1m": -0.04,
+      "percentile": 2.8,
+      "light": "green",
+      "freshness": 2,
+      "frequency": "D"
+    },
+    {
+      "id": "REAL10Y",
+      "name": "10Y Real Rate",
+      "currentValue": 1.89,
+      "change7d": -0.03,
+      "change1m": -0.04,
+      "percentile": 1.9,
+      "light": "green",
+      "freshness": 2,
+      "frequency": "D"
+    },
+    {
+      "id": "DXY",
+      "name": "US Dollar Index",
+      "currentValue": 119.29,
+      "change7d": -1.1623,
+      "change1m": -0.5674,
+      "percentile": 100,
+      "light": "red",
+      "freshness": 8,
+      "frequency": "D"
+    },
+    {
+      "id": "PMI",
+      "name": "Manufacturing PMI (proxy/cache)",
+      "currentValue": 0,
+      "change7d": 0,
+      "change1m": 0,
+      "percentile": 50,
+      "light": "yellow",
+      "freshness": 999,
+      "frequency": "M"
+    },
+    {
+      "id": "CORE_INFL",
+      "name": "Core Inflation (YoY %)",
+      "currentValue": 2.86,
+      "change7d": 0,
+      "change1m": -0.0515,
+      "percentile": 2.9,
+      "light": "green",
+      "freshness": 61,
+      "frequency": "M"
+    }
+  ],
+  "assets": [
+    {
+      "id": "BTC",
+      "name": "Bitcoin",
+      "ticker": "BTC-USD",
+      "assetType": "crypto",
+      "currency": "USD",
+      "benchmarkId": "QQQ",
+      "baseMaxWeight": 0.25,
+      "currentWeight": 0.0,
+      "suggestedMaxWeight": 0.25,
+      "price": 83700.01,
+      "priceChange24h": -0.67,
+      "priceChange7d": -5.26,
+      "priceChange30d": -10.72
+    },
+    {
+      "id": "AI_BASKET",
+      "name": "AI Basket",
+      "ticker": "SMH",
+      "assetType": "equity",
+      "currency": "USD",
+      "benchmarkId": "SPY",
+      "baseMaxWeight": 0.4,
+      "currentWeight": 0.0,
+      "suggestedMaxWeight": 0.4,
+      "price": 0,
+      "priceChange24h": 0,
+      "priceChange7d": 0,
+      "priceChange30d": 0
+    },
+    {
+      "id": "TSLA",
+      "name": "Tesla",
+      "ticker": "TSLA",
+      "assetType": "equity",
+      "currency": "USD",
+      "benchmarkId": "SPY",
+      "baseMaxWeight": 0.15,
+      "currentWeight": 0.0,
+      "suggestedMaxWeight": 0.15,
+      "price": 0,
+      "priceChange24h": 0,
+      "priceChange7d": 0,
+      "priceChange30d": 0
+    },
+    {
+      "id": "BABA",
+      "name": "Alibaba",
+      "ticker": "9988.HK",
+      "assetType": "hk_equity",
+      "currency": "HKD",
+      "benchmarkId": "HSTECH",
+      "baseMaxWeight": 0.15,
+      "currentWeight": 0.0,
+      "suggestedMaxWeight": 0.15,
+      "price": 0,
+      "priceChange24h": 0,
+      "priceChange7d": 0,
+      "priceChange30d": 0
+    },
+    {
+      "id": "TENCENT",
+      "name": "Tencent",
+      "ticker": "0700.HK",
+      "assetType": "hk_equity",
+      "currency": "HKD",
+      "benchmarkId": "HSTECH",
+      "baseMaxWeight": 0.15,
+      "currentWeight": 0.0,
+      "suggestedMaxWeight": 0.15,
+      "price": 0,
+      "priceChange24h": 0,
+      "priceChange7d": 0,
+      "priceChange30d": 0
+    },
+    {
+      "id": "XAU",
+      "name": "Gold",
+      "ticker": "GC=F",
+      "assetType": "metal",
+      "currency": "USD",
+      "benchmarkId": null,
+      "baseMaxWeight": 0.2,
+      "currentWeight": 0.0,
+      "suggestedMaxWeight": 0.2,
+      "price": 0,
+      "priceChange24h": 0,
+      "priceChange7d": 0,
+      "priceChange30d": 0
+    },
+    {
+      "id": "XAG",
+      "name": "Silver",
+      "ticker": "SI=F",
+      "assetType": "metal",
+      "currency": "USD",
+      "benchmarkId": null,
+      "baseMaxWeight": 0.08,
+      "currentWeight": 0.0,
+      "suggestedMaxWeight": 0.08,
+      "price": 0,
+      "priceChange24h": 0,
+      "priceChange7d": 0,
+      "priceChange30d": 0
+    },
+    {
+      "id": "HG",
+      "name": "Copper",
+      "ticker": "HG=F",
+      "assetType": "future",
+      "currency": "USD",
+      "benchmarkId": null,
+      "baseMaxWeight": 0.15,
+      "currentWeight": 0.0,
+      "suggestedMaxWeight": 0.15,
+      "price": 0,
+      "priceChange24h": 0,
+      "priceChange7d": 0,
+      "priceChange30d": 0
+    }
+  ],
+  "assetSignals": [
+    {
+      "assetId": "BTC",
+      "date": "2026-01-31",
+      "trendLight": "red",
+      "riskLight": "red",
+      "catalystLight": "yellow",
+      "suggestedMaxWeight": 0.25,
+      "action": "REDUCE",
+      "reasonCodes": [
+        "VOL_HIGH"
+      ],
+      "notes": "red/red/yellow"
+    },
+    {
+      "assetId": "AI_BASKET",
+      "date": "2026-01-31",
+      "trendLight": "yellow",
+      "riskLight": "yellow",
+      "catalystLight": "yellow",
+      "suggestedMaxWeight": 0.4,
+      "action": "HOLD",
+      "reasonCodes": [
+        "HOLD"
+      ],
+      "notes": "yellow/yellow/yellow"
+    },
+    {
+      "assetId": "TSLA",
+      "date": "2026-01-31",
+      "trendLight": "yellow",
+      "riskLight": "yellow",
+      "catalystLight": "yellow",
+      "suggestedMaxWeight": 0.15,
+      "action": "HOLD",
+      "reasonCodes": [
+        "HOLD"
+      ],
+      "notes": "yellow/yellow/yellow"
+    },
+    {
+      "assetId": "BABA",
+      "date": "2026-01-31",
+      "trendLight": "yellow",
+      "riskLight": "yellow",
+      "catalystLight": "yellow",
+      "suggestedMaxWeight": 0.15,
+      "action": "HOLD",
+      "reasonCodes": [
+        "HOLD"
+      ],
+      "notes": "yellow/yellow/yellow"
+    },
+    {
+      "assetId": "TENCENT",
+      "date": "2026-01-31",
+      "trendLight": "yellow",
+      "riskLight": "yellow",
+      "catalystLight": "yellow",
+      "suggestedMaxWeight": 0.15,
+      "action": "HOLD",
+      "reasonCodes": [
+        "HOLD"
+      ],
+      "notes": "yellow/yellow/yellow"
+    },
+    {
+      "assetId": "XAU",
+      "date": "2026-01-31",
+      "trendLight": "yellow",
+      "riskLight": "yellow",
+      "catalystLight": "yellow",
+      "suggestedMaxWeight": 0.2,
+      "action": "HOLD",
+      "reasonCodes": [
+        "HOLD"
+      ],
+      "notes": "yellow/yellow/yellow"
+    },
+    {
+      "assetId": "XAG",
+      "date": "2026-01-31",
+      "trendLight": "yellow",
+      "riskLight": "yellow",
+      "catalystLight": "yellow",
+      "suggestedMaxWeight": 0.08,
+      "action": "HOLD",
+      "reasonCodes": [
+        "HOLD"
+      ],
+      "notes": "yellow/yellow/yellow"
+    },
+    {
+      "assetId": "HG",
+      "date": "2026-01-31",
+      "trendLight": "yellow",
+      "riskLight": "yellow",
+      "catalystLight": "yellow",
+      "suggestedMaxWeight": 0.15,
+      "action": "HOLD",
+      "reasonCodes": [
+        "HOLD"
+      ],
+      "notes": "yellow/yellow/yellow"
+    }
+  ],
+  "weeklyKondratieff": {
+    "date": "2026-01-31",
+    "aiDiffusionIndex": 57.992,
+    "constraintIndex": 22.240000000000002,
+    "phase": "transition",
+    "strategy": "Regime A; HY利差回落; 实际利率下行; 美元走弱",
+    "components": {
+      "soxRatio": 1.0,
+      "nvdaRatio": 1.0,
+      "utilityRatio": 1.0,
+      "copperMomentum": 0.0,
+      "energyPrice": 0.0
+    }
+  },
+  "technicalData": {
+    "BTC": {
+      "ma20": 90435.769,
+      "ma60": 89861.91416666665,
+      "ma200": 104181.20289999999,
+      "mom12w": -18.19215633916883,
+      "vol20Ann": 33.4017419552158,
+      "mdd60": 13.668413308141433,
+      "mdd120": 32.856577656051485,
+      "volPercentile1y": 0.3968253968253968,
+      "ddPercentile1y": null,
+      "rsToBenchmark": 1.0,
+      "correlationDXY": 0.0,
+      "correlationRealRate": 0.0,
+      "correlationSPX": 0.0,
+      "assetId": "BTC"
+    },
+    "AI_BASKET": {
+      "assetId": "AI_BASKET",
+      "ma20": 0,
+      "ma60": 0,
+      "ma200": 0,
+      "mom12w": 0,
+      "rsToBenchmark": 1,
+      "vol20Ann": 0,
+      "mdd60": 0,
+      "mdd120": 0,
+      "volPercentile1y": 50,
+      "ddPercentile1y": 50,
+      "correlationDXY": 0,
+      "correlationRealRate": 0,
+      "correlationSPX": 0
+    },
+    "TSLA": {
+      "assetId": "TSLA",
+      "ma20": 0,
+      "ma60": 0,
+      "ma200": 0,
+      "mom12w": 0,
+      "rsToBenchmark": 1,
+      "vol20Ann": 0,
+      "mdd60": 0,
+      "mdd120": 0,
+      "volPercentile1y": 50,
+      "ddPercentile1y": 50,
+      "correlationDXY": 0,
+      "correlationRealRate": 0,
+      "correlationSPX": 0
+    },
+    "BABA": {
+      "assetId": "BABA",
+      "ma20": 0,
+      "ma60": 0,
+      "ma200": 0,
+      "mom12w": 0,
+      "rsToBenchmark": 1,
+      "vol20Ann": 0,
+      "mdd60": 0,
+      "mdd120": 0,
+      "volPercentile1y": 50,
+      "ddPercentile1y": 50,
+      "correlationDXY": 0,
+      "correlationRealRate": 0,
+      "correlationSPX": 0
+    },
+    "TENCENT": {
+      "assetId": "TENCENT",
+      "ma20": 0,
+      "ma60": 0,
+      "ma200": 0,
+      "mom12w": 0,
+      "rsToBenchmark": 1,
+      "vol20Ann": 0,
+      "mdd60": 0,
+      "mdd120": 0,
+      "volPercentile1y": 50,
+      "ddPercentile1y": 50,
+      "correlationDXY": 0,
+      "correlationRealRate": 0,
+      "correlationSPX": 0
+    },
+    "XAU": {
+      "assetId": "XAU",
+      "ma20": 0,
+      "ma60": 0,
+      "ma200": 0,
+      "mom12w": 0,
+      "rsToBenchmark": 1,
+      "vol20Ann": 0,
+      "mdd60": 0,
+      "mdd120": 0,
+      "volPercentile1y": 50,
+      "ddPercentile1y": 50,
+      "correlationDXY": 0,
+      "correlationRealRate": 0,
+      "correlationSPX": 0
+    },
+    "XAG": {
+      "assetId": "XAG",
+      "ma20": 0,
+      "ma60": 0,
+      "ma200": 0,
+      "mom12w": 0,
+      "rsToBenchmark": 1,
+      "vol20Ann": 0,
+      "mdd60": 0,
+      "mdd120": 0,
+      "volPercentile1y": 50,
+      "ddPercentile1y": 50,
+      "correlationDXY": 0,
+      "correlationRealRate": 0,
+      "correlationSPX": 0
+    },
+    "HG": {
+      "assetId": "HG",
+      "ma20": 0,
+      "ma60": 0,
+      "ma200": 0,
+      "mom12w": 0,
+      "rsToBenchmark": 1,
+      "vol20Ann": 0,
+      "mdd60": 0,
+      "mdd120": 0,
+      "volPercentile1y": 50,
+      "ddPercentile1y": 50,
+      "correlationDXY": 0,
+      "correlationRealRate": 0,
+      "correlationSPX": 0
+    }
+  },
+  "priceHistory": {}
+}

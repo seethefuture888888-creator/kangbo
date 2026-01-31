@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  dashboard_backend:
+    build:
+      context: ./dashboard_backend
+    ports:
+      - "8000:8000"
+    environment:
+      DASHBOARD_JSON_PATH: /data/dashboard.json
+      CORS_ALLOW_ORIGINS: "*"
+      SERVE_FRONTEND: "false"
+    volumes:
+      - ./dashboard_frontend/app/public/data:/data:rw
+
+  dashboard_frontend:
+    build:
+      context: ./dashboard_frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./dashboard_frontend/app/public/data:/usr/share/nginx/html/data:ro
