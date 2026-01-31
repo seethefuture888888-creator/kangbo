@@ -7,16 +7,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #94a3b8;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #64748b;
 }
 
 /* Smooth transitions */
@@ -60,9 +60,10 @@
 
 /* Glass effect */
 .glass {
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 /* Table row hover */
@@ -71,7 +72,7 @@
 }
 
 .table-row-hover:hover {
-  background-color: rgba(51, 65, 85, 0.3);
+  background-color: rgba(241, 245, 249, 0.9);
 }
 
 /* Progress bar custom styles */
@@ -119,8 +120,8 @@ a:focus-visible {
 
 /* Selection color */
 ::selection {
-  background-color: rgba(59, 130, 246, 0.3);
-  color: #e2e8f0;
+  background-color: rgba(59, 130, 246, 0.25);
+  color: #0f172a;
 }
 
 /* Loading animation */

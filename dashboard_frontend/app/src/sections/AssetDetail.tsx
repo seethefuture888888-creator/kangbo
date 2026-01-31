@@ -69,7 +69,7 @@ export function AssetDetail({
             variant="outline" 
             size="sm" 
             onClick={onBack}
-            className="border-slate-700 bg-slate-900 text-slate-300 hover:bg-slate-800"
+            className="border-slate-300 bg-white text-slate-700 hover:bg-slate-50"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             返回
@@ -80,20 +80,20 @@ export function AssetDetail({
               <span className="text-lg font-bold text-white">{asset.id.slice(0, 2)}</span>
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-slate-100">{asset.name}</h2>
-              <p className="text-sm text-slate-400">{asset.ticker}</p>
+              <h2 className="text-2xl font-bold text-slate-800">{asset.name}</h2>
+              <p className="text-sm text-slate-500">{asset.ticker}</p>
             </div>
           </div>
         </div>
 
         <div className="flex items-center gap-4">
           <div className="text-right">
-            <p className="text-3xl font-bold text-slate-100">
+            <p className="text-3xl font-bold text-slate-800">
               ${formatNumber(latestPrice)}
             </p>
             <p className={cn(
               "text-sm font-medium",
-              priceChange >= 0 ? "text-emerald-400" : "text-rose-400"
+              priceChange >= 0 ? "text-emerald-600" : "text-rose-600"
             )}>
               {priceChange >= 0 ? '+' : ''}{priceChange.toFixed(2)}% (24h)
             </p>
@@ -103,31 +103,31 @@ export function AssetDetail({
 
       {/* Three Lights */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="bg-slate-900/80 border-slate-800">
+        <Card className="bg-white border-slate-200 shadow-sm">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-slate-400" />
-                <span className="text-sm text-slate-300">Trend 趋势</span>
+                <TrendingUp className="w-5 h-5 text-slate-500" />
+                <span className="text-sm text-slate-700">Trend 趋势</span>
               </div>
               <LightBadge status={signal.trendLight} />
             </div>
             <div className="mt-4 space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">MA20</span>
-                <span className="text-slate-300">${formatNumber(technicalData.ma20)}</span>
+                <span className="text-slate-700">${formatNumber(technicalData.ma20)}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">MA60</span>
-                <span className="text-slate-300">${formatNumber(technicalData.ma60)}</span>
+                <span className="text-slate-700">${formatNumber(technicalData.ma60)}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">MA200</span>
-                <span className="text-slate-300">${formatNumber(technicalData.ma200)}</span>
+                <span className="text-slate-700">${formatNumber(technicalData.ma200)}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">12周动量</span>
-                <span className={technicalData.mom12w >= 0 ? "text-emerald-400" : "text-rose-400"}>
+                <span className={technicalData.mom12w >= 0 ? "text-emerald-600" : "text-rose-600"}>
                   {formatPercent(technicalData.mom12w)}
                 </span>
               </div>
@@ -135,61 +135,61 @@ export function AssetDetail({
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900/80 border-slate-800">
+        <Card className="bg-white border-slate-200 shadow-sm">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Activity className="w-5 h-5 text-slate-400" />
-                <span className="text-sm text-slate-300">Risk 风险</span>
+                <Activity className="w-5 h-5 text-slate-500" />
+                <span className="text-sm text-slate-700">Risk 风险</span>
               </div>
               <LightBadge status={signal.riskLight} />
             </div>
             <div className="mt-4 space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">20日波动率</span>
-                <span className="text-slate-300">{(technicalData.vol20Ann * 100).toFixed(1)}%</span>
+                <span className="text-slate-700">{(technicalData.vol20Ann * 100).toFixed(1)}%</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">60日最大回撤</span>
-                <span className="text-rose-400">{(technicalData.mdd60 * 100).toFixed(1)}%</span>
+                <span className="text-rose-600">{(technicalData.mdd60 * 100).toFixed(1)}%</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">波动分位(1年)</span>
-                <span className="text-slate-300">{technicalData.volPercentile1y}%</span>
+                <span className="text-slate-700">{technicalData.volPercentile1y}%</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">回撤分位(1年)</span>
-                <span className="text-slate-300">{technicalData.ddPercentile1y}%</span>
+                <span className="text-slate-700">{technicalData.ddPercentile1y}%</span>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900/80 border-slate-800">
+        <Card className="bg-white border-slate-200 shadow-sm">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Zap className="w-5 h-5 text-slate-400" />
-                <span className="text-sm text-slate-300">Catalyst 催化</span>
+                <Zap className="w-5 h-5 text-slate-500" />
+                <span className="text-sm text-slate-700">Catalyst 催化</span>
               </div>
               <LightBadge status={signal.catalystLight} />
             </div>
             <div className="mt-4 space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">相对强弱(RS)</span>
-                <span className="text-slate-300">{technicalData.rsToBenchmark.toFixed(2)}</span>
+                <span className="text-slate-700">{technicalData.rsToBenchmark.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">vs DXY相关</span>
-                <span className="text-slate-300">{technicalData.correlationDXY.toFixed(2)}</span>
+                <span className="text-slate-700">{technicalData.correlationDXY.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">vs 实际利率</span>
-                <span className="text-slate-300">{technicalData.correlationRealRate.toFixed(2)}</span>
+                <span className="text-slate-700">{technicalData.correlationRealRate.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-slate-500">vs SPX相关</span>
-                <span className="text-slate-300">{technicalData.correlationSPX.toFixed(2)}</span>
+                <span className="text-slate-700">{technicalData.correlationSPX.toFixed(2)}</span>
               </div>
             </div>
           </CardContent>
@@ -197,10 +197,10 @@ export function AssetDetail({
       </div>
 
       {/* Price Chart */}
-      <Card className="bg-slate-900/80 border-slate-800">
+      <Card className="bg-white border-slate-200 shadow-sm">
         <CardHeader className="pb-2">
-          <CardTitle className="text-lg font-semibold text-slate-100 flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-blue-400" />
+          <CardTitle className="text-lg font-semibold text-slate-800 flex items-center gap-2">
+            <BarChart3 className="w-5 h-5 text-blue-600" />
             价格走势 (6个月)
           </CardTitle>
         </CardHeader>
@@ -214,30 +214,30 @@ export function AssetDetail({
                     <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                 <XAxis 
                   dataKey="date" 
-                  stroke="#475569"
-                  tick={{ fill: '#64748b', fontSize: 12 }}
+                  stroke="#64748b"
+                  tick={{ fill: '#475569', fontSize: 12 }}
                   tickFormatter={(value) => {
                     const date = new Date(value);
                     return `${date.getMonth() + 1}/${date.getDate()}`;
                   }}
                 />
                 <YAxis 
-                  stroke="#475569"
-                  tick={{ fill: '#64748b', fontSize: 12 }}
+                  stroke="#64748b"
+                  tick={{ fill: '#475569', fontSize: 12 }}
                   domain={['auto', 'auto']}
                   tickFormatter={(value) => `$${value.toFixed(0)}`}
                 />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: '#0f172a', 
-                    border: '1px solid #1e293b',
+                    backgroundColor: '#ffffff', 
+                    border: '1px solid #e2e8f0',
                     borderRadius: '8px'
                   }}
-                  labelStyle={{ color: '#94a3b8' }}
-                  itemStyle={{ color: '#e2e8f0' }}
+                  labelStyle={{ color: '#475569' }}
+                  itemStyle={{ color: '#0f172a' }}
                   formatter={(value: number) => [`$${value.toFixed(2)}`, '']}
                 />
                 <Area 
@@ -275,33 +275,33 @@ export function AssetDetail({
           <div className="flex items-center justify-center gap-6 mt-4 text-xs">
             <div className="flex items-center gap-2">
               <div className="w-3 h-0.5 bg-blue-500" />
-              <span className="text-slate-400">价格</span>
+              <span className="text-slate-500">价格</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-0.5 bg-emerald-500" style={{ borderTop: '1px dashed' }} />
-              <span className="text-slate-400">MA20</span>
+              <span className="text-slate-500">MA20</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-0.5 bg-amber-500" style={{ borderTop: '1px dashed' }} />
-              <span className="text-slate-400">MA60</span>
+              <span className="text-slate-500">MA60</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-0.5 bg-rose-500" style={{ borderTop: '1px dashed' }} />
-              <span className="text-slate-400">MA200</span>
+              <span className="text-slate-500">MA200</span>
             </div>
           </div>
         </CardContent>
       </Card>
 
       {/* Action & Recommendation */}
-      <Card className="bg-slate-900/80 border-slate-800">
+      <Card className="bg-white border-slate-200 shadow-sm">
         <CardContent className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <p className="text-sm text-slate-400 mb-3">建议动作</p>
+              <p className="text-sm text-slate-500 mb-3">建议动作</p>
               <div className="flex items-center gap-3">
                 <ActionBadge action={signal.action} size="lg" />
-                <span className="text-slate-300">
+                <span className="text-slate-700">
                   建议仓位上限: {(signal.suggestedMaxWeight * 100).toFixed(0)}%
                 </span>
               </div>
@@ -309,7 +309,7 @@ export function AssetDetail({
                 {signal.reasonCodes.map((code, idx) => (
                   <span 
                     key={idx}
-                    className="px-2 py-1 rounded bg-slate-800 text-xs text-slate-400"
+                    className="px-2 py-1 rounded bg-slate-100 text-xs text-slate-500"
                   >
                     {code}
                   </span>
@@ -317,8 +317,8 @@ export function AssetDetail({
               </div>
             </div>
             <div>
-              <p className="text-sm text-slate-400 mb-3">分析备注</p>
-              <p className="text-slate-300">{signal.notes}</p>
+              <p className="text-sm text-slate-500 mb-3">分析备注</p>
+              <p className="text-slate-700">{signal.notes}</p>
             </div>
           </div>
         </CardContent>

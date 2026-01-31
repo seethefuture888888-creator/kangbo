@@ -15,7 +15,7 @@ const navItems = [
 
 export function Navigation({ currentView, onViewChange, className }: NavigationProps) {
   return (
-    <nav className={cn("flex items-center gap-1 p-1 bg-slate-900/80 rounded-xl border border-slate-800", className)}>
+    <nav className={cn("flex items-center gap-1 p-1 bg-white rounded-xl border border-slate-200 shadow-sm", className)}>
       {navItems.map((item) => {
         const Icon = item.icon;
         const isActive = currentView === item.id;
@@ -26,12 +26,12 @@ export function Navigation({ currentView, onViewChange, className }: NavigationP
             onClick={() => onViewChange(item.id)}
             className={cn(
               "flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all",
-              "hover:bg-slate-800",
-              isActive && "bg-slate-800 text-slate-100",
-              !isActive && "text-slate-400 hover:text-slate-200"
+              "hover:bg-slate-100",
+              isActive && "bg-slate-100 text-slate-900",
+              !isActive && "text-slate-600 hover:text-slate-800"
             )}
           >
-            <Icon size={16} className={isActive ? "text-blue-400" : ""} />
+            <Icon size={16} className={isActive ? "text-blue-600" : ""} />
             <span>{item.label}</span>
           </button>
         );
@@ -63,10 +63,10 @@ export function Header({
             <BarChart3 className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-slate-100">
+            <h1 className="text-xl font-bold text-slate-800">
               投资决策仪表盘
             </h1>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500">
               Investment Decision Dashboard
             </p>
           </div>
@@ -86,7 +86,7 @@ export function Header({
             disabled={loading}
             className={cn(
               "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all",
-              "bg-slate-800 hover:bg-slate-700 text-slate-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              "bg-slate-200 hover:bg-slate-300 text-slate-700 disabled:opacity-50 disabled:cursor-not-allowed"
             )}
             title="刷新数据"
           >
@@ -95,7 +95,7 @@ export function Header({
           </button>
         )}
         <div className="text-right">
-          <p className="text-sm font-medium text-slate-200">{date}</p>
+          <p className="text-sm font-medium text-slate-700">{date}</p>
           <p className="text-xs text-slate-500">
             数据截止: {dataAsOf}
           </p>

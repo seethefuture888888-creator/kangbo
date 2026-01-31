@@ -14,10 +14,10 @@ export function RiskScore({
   className 
 }: RiskScoreProps) {
   const getColor = (s: number) => {
-    if (s >= 70) return 'text-emerald-400';
-    if (s >= 50) return 'text-amber-400';
-    if (s >= 30) return 'text-orange-400';
-    return 'text-rose-400';
+    if (s >= 70) return 'text-emerald-600';
+    if (s >= 50) return 'text-amber-600';
+    if (s >= 30) return 'text-orange-600';
+    return 'text-rose-600';
   };
 
   const getBgColor = (s: number) => {
@@ -49,7 +49,7 @@ export function RiskScore({
       <div 
         className={cn(
           "relative rounded-full flex items-center justify-center",
-          "bg-slate-900 border-4 border-slate-800",
+          "bg-white border-4 border-slate-200 shadow-sm",
           classes.container
         )}
       >
@@ -65,7 +65,7 @@ export function RiskScore({
             fill="none"
             stroke="currentColor"
             strokeWidth="8"
-            className="text-slate-800"
+            className="text-slate-200"
           />
           <circle
             cx="50"
@@ -114,12 +114,12 @@ export function RiskScoreBar({
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex justify-between text-xs text-slate-400 mb-1">
+      <div className="flex justify-between text-xs text-slate-500 mb-1">
         <span>0</span>
-        <span className="font-medium text-slate-300">Risk Score: {score}</span>
+        <span className="font-medium text-slate-700">Risk Score: {score}</span>
         <span>100</span>
       </div>
-      <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
+      <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
         <div 
           className={cn(
             "h-full rounded-full transition-all duration-500 bg-gradient-to-r",

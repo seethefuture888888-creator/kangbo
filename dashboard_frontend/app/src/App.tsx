@@ -63,11 +63,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-slate-50">
       {/* Background gradient */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
       </div>
 
       {/* Main content */}
@@ -94,13 +94,13 @@ function App() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800 bg-slate-950/50 mt-12">
+      <footer className="border-t border-slate-200 bg-slate-100/80 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-600">
               Investment Decision Dashboard · 基于康波周期框架
             </p>
-            <div className="flex items-center gap-4 text-xs text-slate-600">
+            <div className="flex items-center gap-4 text-xs text-slate-500">
               <span>Regime: {dailySignal.regime}</span>
               <span>RiskScore: {dailySignal.riskScore}</span>
               <span>ADI: {dailySignal.aiDiffusionIndex}</span>

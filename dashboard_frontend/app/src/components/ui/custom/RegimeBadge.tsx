@@ -67,7 +67,7 @@ export function RegimeBadge({
         className={cn(
           "flex items-center gap-2 rounded-lg font-bold tracking-wide",
           sizeClasses[size],
-          "bg-slate-900/80",
+          "bg-white border-slate-200 shadow-sm",
           "border",
           config.border,
           config.text
@@ -80,7 +80,7 @@ export function RegimeBadge({
         )}
       </div>
       {showLabel && (
-        <span className="text-xs text-slate-400 hidden sm:inline">
+        <span className="text-xs text-slate-500 hidden sm:inline">
           {config.description}
         </span>
       )}
@@ -101,7 +101,7 @@ export function RegimeCard({
     <div 
       className={cn(
         "p-4 rounded-xl border",
-        "bg-slate-900/50",
+        "bg-slate-50",
         config.border,
         className
       )}
@@ -112,8 +112,8 @@ export function RegimeCard({
           Regime {regime}
         </span>
       </div>
-      <p className="text-lg font-medium text-slate-200">{config.label}</p>
-      <p className="text-sm text-slate-400 mt-1">{config.description}</p>
+      <p className="text-lg font-medium text-slate-800">{config.label}</p>
+      <p className="text-sm text-slate-500 mt-1">{config.description}</p>
     </div>
   );
 }
