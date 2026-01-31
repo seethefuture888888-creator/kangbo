@@ -1,21 +1,24 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-01-31T07:19:22Z",
+  "generatedAt": "2026-01-31T11:56:15Z",
   "dailySignal": {
     "date": "2026-01-31",
-    "regime": "A",
-    "riskScore": 27.8,
+    "regime": "B",
+    "riskScore": 58.1,
+    "riskScoreConfidence": 1.0,
     "drivers": [
       "HY利差回落",
       "实际利率下行",
-      "美元走弱"
+      "美元走弱",
+      "PMI扩张",
+      "PMI_FALLBACK"
     ],
-    "portfolioAction": "ADD",
-    "riskMode": "进攻",
-    "aiDiffusionIndex": 57.992,
-    "constraintIndex": 22.240000000000002,
-    "commentSummary": "Regime A, RiskScore 28. HY利差回落; 实际利率下行; 美元走弱.",
-    "dataAsOf": "2026-01-31 07:19 UTC"
+    "portfolioAction": "HOLD",
+    "riskMode": "防守",
+    "aiDiffusionIndex": 47.08,
+    "constraintIndex": 46.48,
+    "commentSummary": "Regime B, RiskScore 58. HY利差回落; 实际利率下行; 美元走弱.",
+    "dataAsOf": "2026-01-31 11:56 UTC"
   },
   "macroSwitches": [
     {
@@ -24,8 +27,8 @@
       "currentValue": 2.77,
       "change7d": 0.09,
       "change1m": -0.04,
-      "percentile": 2.8,
-      "light": "green",
+      "percentile": 50.0,
+      "light": "yellow",
       "freshness": 2,
       "frequency": "D"
     },
@@ -35,8 +38,8 @@
       "currentValue": 1.89,
       "change7d": -0.03,
       "change1m": -0.04,
-      "percentile": 1.9,
-      "light": "green",
+      "percentile": 50.0,
+      "light": "yellow",
       "freshness": 2,
       "frequency": "D"
     },
@@ -46,18 +49,18 @@
       "currentValue": 119.29,
       "change7d": -1.1623,
       "change1m": -0.5674,
-      "percentile": 100,
-      "light": "red",
+      "percentile": 50.0,
+      "light": "yellow",
       "freshness": 8,
       "frequency": "D"
     },
     {
       "id": "PMI",
-      "name": "Manufacturing PMI (proxy/cache)",
-      "currentValue": 0,
-      "change7d": 0,
-      "change1m": 0,
-      "percentile": 50,
+      "name": "Manufacturing PMI (New Orders proxy)",
+      "currentValue": 50.0,
+      "change7d": null,
+      "change1m": null,
+      "percentile": 50.0,
       "light": "yellow",
       "freshness": 999,
       "frequency": "M"
@@ -66,14 +69,51 @@
       "id": "CORE_INFL",
       "name": "Core Inflation (YoY %)",
       "currentValue": 2.86,
-      "change7d": 0,
+      "change7d": null,
       "change1m": -0.0515,
-      "percentile": 2.9,
-      "light": "green",
+      "percentile": 50.0,
+      "light": "yellow",
       "freshness": 61,
       "frequency": "M"
     }
   ],
+  "macroDataStatus": {
+    "HY_SPREAD": {
+      "provider": "fred",
+      "ok": true,
+      "note": null,
+      "freq": "D",
+      "freshness_days": 2
+    },
+    "REAL10Y": {
+      "provider": "fred",
+      "ok": true,
+      "note": null,
+      "freq": "D",
+      "freshness_days": 2
+    },
+    "DXY": {
+      "provider": "fred_dtwexbgs",
+      "ok": true,
+      "note": null,
+      "freq": "D",
+      "freshness_days": 8
+    },
+    "PMI": {
+      "provider": "fred",
+      "ok": true,
+      "note": null,
+      "freq": "M",
+      "freshness_days": 999
+    },
+    "CORE_INFL": {
+      "provider": "fred",
+      "ok": true,
+      "note": null,
+      "freq": "M",
+      "freshness_days": 61
+    }
+  },
   "assets": [
     {
       "id": "BTC",
@@ -84,11 +124,11 @@
       "benchmarkId": "QQQ",
       "baseMaxWeight": 0.25,
       "currentWeight": 0.0,
-      "suggestedMaxWeight": 0.25,
-      "price": 83700.01,
-      "priceChange24h": -0.67,
-      "priceChange7d": -5.26,
-      "priceChange30d": -10.72
+      "suggestedMaxWeight": 0.23,
+      "price": 82992.25,
+      "priceChange24h": -1.51,
+      "priceChange7d": -6.06,
+      "priceChange30d": -11.47
     },
     {
       "id": "AI_BASKET",
@@ -99,11 +139,11 @@
       "benchmarkId": "SPY",
       "baseMaxWeight": 0.4,
       "currentWeight": 0.0,
-      "suggestedMaxWeight": 0.4,
-      "price": 0,
-      "priceChange24h": 0,
-      "priceChange7d": 0,
-      "priceChange30d": 0
+      "suggestedMaxWeight": 0.29,
+      "price": 403.46,
+      "priceChange24h": -3.37,
+      "priceChange7d": 0.84,
+      "priceChange30d": 6.85
     },
     {
       "id": "TSLA",
@@ -114,11 +154,11 @@
       "benchmarkId": "SPY",
       "baseMaxWeight": 0.15,
       "currentWeight": 0.0,
-      "suggestedMaxWeight": 0.15,
-      "price": 0,
-      "priceChange24h": 0,
-      "priceChange7d": 0,
-      "priceChange30d": 0
+      "suggestedMaxWeight": 0.11,
+      "price": 430.41,
+      "priceChange24h": 3.32,
+      "priceChange7d": -4.15,
+      "priceChange30d": -4.71
     },
     {
       "id": "BABA",
@@ -129,11 +169,11 @@
       "benchmarkId": "HSTECH",
       "baseMaxWeight": 0.15,
       "currentWeight": 0.0,
-      "suggestedMaxWeight": 0.15,
-      "price": 0,
-      "priceChange24h": 0,
-      "priceChange7d": 0,
-      "priceChange30d": 0
+      "suggestedMaxWeight": 0.11,
+      "price": 169.2,
+      "priceChange24h": -2.37,
+      "priceChange7d": 0.42,
+      "priceChange30d": 10.73
     },
     {
       "id": "TENCENT",
@@ -144,11 +184,11 @@
       "benchmarkId": "HSTECH",
       "baseMaxWeight": 0.15,
       "currentWeight": 0.0,
-      "suggestedMaxWeight": 0.15,
-      "price": 0,
-      "priceChange24h": 0,
-      "priceChange7d": 0,
-      "priceChange30d": 0
+      "suggestedMaxWeight": 0.12,
+      "price": 606.0,
+      "priceChange24h": -2.57,
+      "priceChange7d": 1.85,
+      "priceChange30d": -2.96
     },
     {
       "id": "XAU",
@@ -159,11 +199,11 @@
       "benchmarkId": null,
       "baseMaxWeight": 0.2,
       "currentWeight": 0.0,
-      "suggestedMaxWeight": 0.2,
-      "price": 0,
-      "priceChange24h": 0,
-      "priceChange7d": 0,
-      "priceChange30d": 0
+      "suggestedMaxWeight": 0.14,
+      "price": 4847.87,
+      "priceChange24h": -9.87,
+      "priceChange7d": -2.69,
+      "priceChange30d": 8.96
     },
     {
       "id": "XAG",
@@ -174,11 +214,11 @@
       "benchmarkId": null,
       "baseMaxWeight": 0.08,
       "currentWeight": 0.0,
-      "suggestedMaxWeight": 0.08,
-      "price": 0,
-      "priceChange24h": 0,
-      "priceChange7d": 0,
-      "priceChange30d": 0
+      "suggestedMaxWeight": 0.06,
+      "price": 83.14,
+      "priceChange24h": -28.03,
+      "priceChange7d": -18.89,
+      "priceChange30d": 8.52
     },
     {
       "id": "HG",
@@ -189,11 +229,11 @@
       "benchmarkId": null,
       "baseMaxWeight": 0.15,
       "currentWeight": 0.0,
-      "suggestedMaxWeight": 0.15,
-      "price": 0,
-      "priceChange24h": 0,
-      "priceChange7d": 0,
-      "priceChange30d": 0
+      "suggestedMaxWeight": 0.11,
+      "price": 36.43,
+      "priceChange24h": -5.89,
+      "priceChange7d": -0.25,
+      "priceChange30d": -0.92
     }
   ],
   "assetSignals": [
@@ -203,7 +243,7 @@
       "trendLight": "red",
       "riskLight": "red",
       "catalystLight": "yellow",
-      "suggestedMaxWeight": 0.25,
+      "suggestedMaxWeight": 0.23,
       "action": "REDUCE",
       "reasonCodes": [
         "VOL_HIGH"
@@ -213,120 +253,252 @@
     {
       "assetId": "AI_BASKET",
       "date": "2026-01-31",
-      "trendLight": "yellow",
-      "riskLight": "yellow",
+      "trendLight": "green",
+      "riskLight": "green",
       "catalystLight": "yellow",
-      "suggestedMaxWeight": 0.4,
-      "action": "HOLD",
+      "suggestedMaxWeight": 0.29,
+      "action": "ADD",
       "reasonCodes": [
-        "HOLD"
+        "TREND_UP"
       ],
-      "notes": "yellow/yellow/yellow"
+      "notes": "green/green/yellow"
     },
     {
       "assetId": "TSLA",
       "date": "2026-01-31",
       "trendLight": "yellow",
-      "riskLight": "yellow",
+      "riskLight": "green",
       "catalystLight": "yellow",
-      "suggestedMaxWeight": 0.15,
+      "suggestedMaxWeight": 0.11,
       "action": "HOLD",
       "reasonCodes": [
         "HOLD"
       ],
-      "notes": "yellow/yellow/yellow"
+      "notes": "yellow/green/yellow"
     },
     {
       "assetId": "BABA",
       "date": "2026-01-31",
-      "trendLight": "yellow",
-      "riskLight": "yellow",
+      "trendLight": "green",
+      "riskLight": "green",
       "catalystLight": "yellow",
-      "suggestedMaxWeight": 0.15,
-      "action": "HOLD",
+      "suggestedMaxWeight": 0.11,
+      "action": "ADD",
       "reasonCodes": [
-        "HOLD"
+        "TREND_UP"
       ],
-      "notes": "yellow/yellow/yellow"
+      "notes": "green/green/yellow"
     },
     {
       "assetId": "TENCENT",
       "date": "2026-01-31",
       "trendLight": "yellow",
-      "riskLight": "yellow",
+      "riskLight": "green",
       "catalystLight": "yellow",
-      "suggestedMaxWeight": 0.15,
+      "suggestedMaxWeight": 0.12,
       "action": "HOLD",
       "reasonCodes": [
         "HOLD"
       ],
-      "notes": "yellow/yellow/yellow"
+      "notes": "yellow/green/yellow"
     },
     {
       "assetId": "XAU",
       "date": "2026-01-31",
-      "trendLight": "yellow",
-      "riskLight": "yellow",
+      "trendLight": "green",
+      "riskLight": "green",
       "catalystLight": "yellow",
-      "suggestedMaxWeight": 0.2,
-      "action": "HOLD",
+      "suggestedMaxWeight": 0.14,
+      "action": "ADD",
       "reasonCodes": [
-        "HOLD"
+        "PROXY_USED",
+        "TREND_UP"
       ],
-      "notes": "yellow/yellow/yellow"
+      "notes": "green/green/yellow"
     },
     {
       "assetId": "XAG",
       "date": "2026-01-31",
       "trendLight": "yellow",
-      "riskLight": "yellow",
+      "riskLight": "green",
       "catalystLight": "yellow",
-      "suggestedMaxWeight": 0.08,
+      "suggestedMaxWeight": 0.06,
       "action": "HOLD",
       "reasonCodes": [
-        "HOLD"
+        "PROXY_USED"
       ],
-      "notes": "yellow/yellow/yellow"
+      "notes": "yellow/green/yellow"
     },
     {
       "assetId": "HG",
       "date": "2026-01-31",
       "trendLight": "yellow",
-      "riskLight": "yellow",
+      "riskLight": "green",
       "catalystLight": "yellow",
-      "suggestedMaxWeight": 0.15,
+      "suggestedMaxWeight": 0.11,
       "action": "HOLD",
       "reasonCodes": [
-        "HOLD"
+        "PROXY_USED"
       ],
-      "notes": "yellow/yellow/yellow"
+      "notes": "yellow/green/yellow"
     }
   ],
+  "dataStatus": {
+    "BTC-USD": {
+      "provider": "binance",
+      "freshness_days": 0,
+      "ok": true,
+      "note": null,
+      "last_date": "2026-01-31",
+      "last_obs_date": "2026-01-31",
+      "row_count": 400,
+      "error_reason": null,
+      "mapped_symbol": "BTCUSDT",
+      "asof_ts": "2026-01-31T11:56:15Z",
+      "is_proxy": false,
+      "proxy_for": null,
+      "stale_policy": null,
+      "price_adjusted": false
+    },
+    "SMH": {
+      "provider": "stooq",
+      "freshness_days": 1,
+      "ok": true,
+      "note": null,
+      "last_date": "2026-01-30",
+      "last_obs_date": "2026-01-30",
+      "row_count": 273,
+      "error_reason": null,
+      "mapped_symbol": "smh.us",
+      "asof_ts": "2026-01-31T11:56:15Z",
+      "is_proxy": false,
+      "proxy_for": null,
+      "stale_policy": null,
+      "price_adjusted": false
+    },
+    "TSLA": {
+      "provider": "stooq",
+      "freshness_days": 1,
+      "ok": true,
+      "note": null,
+      "last_date": "2026-01-30",
+      "last_obs_date": "2026-01-30",
+      "row_count": 273,
+      "error_reason": null,
+      "mapped_symbol": "tsla.us",
+      "asof_ts": "2026-01-31T11:56:15Z",
+      "is_proxy": false,
+      "proxy_for": null,
+      "stale_policy": null,
+      "price_adjusted": false
+    },
+    "9988.HK": {
+      "provider": "stooq",
+      "freshness_days": 1,
+      "ok": true,
+      "note": null,
+      "last_date": "2026-01-30",
+      "last_obs_date": "2026-01-30",
+      "row_count": 270,
+      "error_reason": null,
+      "mapped_symbol": "9988.hk",
+      "asof_ts": "2026-01-31T11:56:15Z",
+      "is_proxy": false,
+      "proxy_for": null,
+      "stale_policy": null,
+      "price_adjusted": false
+    },
+    "0700.HK": {
+      "provider": "stooq",
+      "freshness_days": 1,
+      "ok": true,
+      "note": null,
+      "last_date": "2026-01-30",
+      "last_obs_date": "2026-01-30",
+      "row_count": 270,
+      "error_reason": null,
+      "mapped_symbol": "700.hk",
+      "asof_ts": "2026-01-31T11:56:15Z",
+      "is_proxy": false,
+      "proxy_for": null,
+      "stale_policy": null,
+      "price_adjusted": false
+    },
+    "GC=F": {
+      "provider": "proxy:xauusd",
+      "freshness_days": 1,
+      "ok": true,
+      "note": null,
+      "last_date": "2026-01-30",
+      "last_obs_date": "2026-01-30",
+      "row_count": 282,
+      "error_reason": null,
+      "mapped_symbol": "xauusd",
+      "asof_ts": "2026-01-31T11:56:15Z",
+      "is_proxy": true,
+      "proxy_for": "xauusd",
+      "stale_policy": null,
+      "price_adjusted": false
+    },
+    "SI=F": {
+      "provider": "proxy:xagusd",
+      "freshness_days": 1,
+      "ok": true,
+      "note": null,
+      "last_date": "2026-01-30",
+      "last_obs_date": "2026-01-30",
+      "row_count": 282,
+      "error_reason": null,
+      "mapped_symbol": "xagusd",
+      "asof_ts": "2026-01-31T11:56:15Z",
+      "is_proxy": true,
+      "proxy_for": "xagusd",
+      "stale_policy": null,
+      "price_adjusted": false
+    },
+    "HG=F": {
+      "provider": "proxy:cper.us",
+      "freshness_days": 1,
+      "ok": true,
+      "note": null,
+      "last_date": "2026-01-30",
+      "last_obs_date": "2026-01-30",
+      "row_count": 273,
+      "error_reason": null,
+      "mapped_symbol": "cper.us",
+      "asof_ts": "2026-01-31T11:56:15Z",
+      "is_proxy": true,
+      "proxy_for": "cper.us",
+      "stale_policy": null,
+      "price_adjusted": false
+    }
+  },
   "weeklyKondratieff": {
     "date": "2026-01-31",
-    "aiDiffusionIndex": 57.992,
-    "constraintIndex": 22.240000000000002,
+    "aiDiffusionIndex": 47.08,
+    "constraintIndex": 46.48,
     "phase": "transition",
-    "strategy": "Regime A; HY利差回落; 实际利率下行; 美元走弱",
+    "strategy": "Regime B; HY利差回落; 实际利率下行; 美元走弱",
     "components": {
       "soxRatio": 1.0,
       "nvdaRatio": 1.0,
       "utilityRatio": 1.0,
-      "copperMomentum": 0.0,
+      "copperMomentum": 6.5205,
       "energyPrice": 0.0
-    }
+    },
+    "chainInputMissing": null
   },
   "technicalData": {
     "BTC": {
-      "ma20": 90435.769,
-      "ma60": 89861.91416666665,
-      "ma200": 104181.20289999999,
-      "mom12w": -18.19215633916883,
-      "vol20Ann": 33.4017419552158,
-      "mdd60": 13.668413308141433,
-      "mdd120": 32.856577656051485,
+      "ma20": 90400.38100000001,
+      "ma60": 89850.11816666667,
+      "ma200": 104177.6641,
+      "mom12w": -18.883916345283403,
+      "vol20Ann": 33.61289843836931,
+      "mdd60": 14.398425691617007,
+      "mdd120": 33.424336591781035,
       "volPercentile1y": 0.3968253968253968,
-      "ddPercentile1y": null,
+      "ddPercentile1y": 50.0,
       "rsToBenchmark": 1.0,
       "correlationDXY": 0.0,
       "correlationRealRate": 0.0,
@@ -334,116 +506,116 @@
       "assetId": "BTC"
     },
     "AI_BASKET": {
-      "assetId": "AI_BASKET",
-      "ma20": 0,
-      "ma60": 0,
-      "ma200": 0,
-      "mom12w": 0,
-      "rsToBenchmark": 1,
-      "vol20Ann": 0,
-      "mdd60": 0,
-      "mdd120": 0,
-      "volPercentile1y": 50,
-      "ddPercentile1y": 50,
-      "correlationDXY": 0,
-      "correlationRealRate": 0,
-      "correlationSPX": 0
+      "ma20": 394.899,
+      "ma60": 367.259,
+      "ma200": 308.50005,
+      "mom12w": 23.624218654246842,
+      "vol20Ann": 29.267785247955963,
+      "mdd60": 9.568845618915153,
+      "mdd120": 11.8038034779306,
+      "volPercentile1y": 98.80952380952381,
+      "ddPercentile1y": 50.0,
+      "rsToBenchmark": 1.0,
+      "correlationDXY": 0.0,
+      "correlationRealRate": 0.0,
+      "correlationSPX": 0.0,
+      "assetId": "AI_BASKET"
     },
     "TSLA": {
-      "assetId": "TSLA",
-      "ma20": 0,
-      "ma60": 0,
-      "ma200": 0,
-      "mom12w": 0,
-      "rsToBenchmark": 1,
-      "vol20Ann": 0,
-      "mdd60": 0,
-      "mdd120": 0,
-      "volPercentile1y": 50,
-      "ddPercentile1y": 50,
-      "correlationDXY": 0,
-      "correlationRealRate": 0,
-      "correlationSPX": 0
+      "ma20": 436.9995,
+      "ma60": 441.52233333333334,
+      "ma200": 377.2227,
+      "mom12w": -3.2177549919050197,
+      "vol20Ann": 38.76341921078838,
+      "mdd60": 15.361308892592035,
+      "mdd120": 16.499775818263345,
+      "volPercentile1y": 73.01587301587301,
+      "ddPercentile1y": 50.0,
+      "rsToBenchmark": 1.0,
+      "correlationDXY": 0.0,
+      "correlationRealRate": 0.0,
+      "correlationSPX": 0.0,
+      "assetId": "TSLA"
     },
     "BABA": {
-      "assetId": "BABA",
-      "ma20": 0,
-      "ma60": 0,
-      "ma200": 0,
-      "mom12w": 0,
-      "rsToBenchmark": 1,
-      "vol20Ann": 0,
-      "mdd60": 0,
-      "mdd120": 0,
-      "volPercentile1y": 50,
-      "ddPercentile1y": 50,
-      "correlationDXY": 0,
-      "correlationRealRate": 0,
-      "correlationSPX": 0
+      "ma20": 161.01500000000001,
+      "ma60": 155.39,
+      "ma200": 137.4685,
+      "mom12w": 1.621621621621605,
+      "vol20Ann": 43.34380810189199,
+      "mdd60": 13.57575757575758,
+      "mdd120": 22.960561858454888,
+      "volPercentile1y": 94.04761904761905,
+      "ddPercentile1y": 50.0,
+      "rsToBenchmark": 1.0,
+      "correlationDXY": 0.0,
+      "correlationRealRate": 0.0,
+      "correlationSPX": 0.0,
+      "assetId": "BABA"
     },
     "TENCENT": {
-      "assetId": "TENCENT",
-      "ma20": 0,
-      "ma60": 0,
-      "ma200": 0,
-      "mom12w": 0,
-      "rsToBenchmark": 1,
-      "vol20Ann": 0,
-      "mdd60": 0,
-      "mdd120": 0,
-      "volPercentile1y": 50,
-      "ddPercentile1y": 50,
-      "correlationDXY": 0,
-      "correlationRealRate": 0,
-      "correlationSPX": 0
+      "ma20": 614.65,
+      "ma60": 616.9666666666667,
+      "ma200": 576.0369999999999,
+      "mom12w": -5.900621118012417,
+      "vol20Ann": 20.34173828890418,
+      "mdd60": 9.43683409436834,
+      "mdd120": 12.177121771217712,
+      "volPercentile1y": 67.46031746031747,
+      "ddPercentile1y": 50.0,
+      "rsToBenchmark": 1.0,
+      "correlationDXY": 0.0,
+      "correlationRealRate": 0.0,
+      "correlationSPX": 0.0,
+      "assetId": "TENCENT"
     },
     "XAU": {
-      "assetId": "XAU",
-      "ma20": 0,
-      "ma60": 0,
-      "ma200": 0,
-      "mom12w": 0,
-      "rsToBenchmark": 1,
-      "vol20Ann": 0,
-      "mdd60": 0,
-      "mdd120": 0,
-      "volPercentile1y": 50,
-      "ddPercentile1y": 50,
-      "correlationDXY": 0,
-      "correlationRealRate": 0,
-      "correlationSPX": 0
+      "ma20": 4770.70475,
+      "ma60": 4406.716333333333,
+      "ma200": 3786.32025,
+      "mom12w": 25.703047110087752,
+      "vol20Ann": 43.98819612240131,
+      "mdd60": 10.476125403265275,
+      "mdd120": 10.476125403265275,
+      "volPercentile1y": 97.61904761904762,
+      "ddPercentile1y": 50.0,
+      "rsToBenchmark": 1.0,
+      "correlationDXY": 0.0,
+      "correlationRealRate": 0.0,
+      "correlationSPX": 0.0,
+      "assetId": "XAU"
     },
     "XAG": {
-      "assetId": "XAG",
-      "ma20": 0,
-      "ma60": 0,
-      "ma200": 0,
-      "mom12w": 0,
-      "rsToBenchmark": 1,
-      "vol20Ann": 0,
-      "mdd60": 0,
-      "mdd120": 0,
-      "volPercentile1y": 50,
-      "ddPercentile1y": 50,
-      "correlationDXY": 0,
-      "correlationRealRate": 0,
-      "correlationSPX": 0
+      "ma20": 92.611325,
+      "ma60": 70.53751666666668,
+      "ma200": 48.822802499999995,
+      "mom12w": 76.93216280925779,
+      "vol20Ann": 120.61356009756943,
+      "mdd60": 28.85176595435135,
+      "mdd120": 28.85176595435135,
+      "volPercentile1y": 94.44444444444444,
+      "ddPercentile1y": 50.0,
+      "rsToBenchmark": 1.0,
+      "correlationDXY": 0.0,
+      "correlationRealRate": 0.0,
+      "correlationSPX": 0.0,
+      "assetId": "XAG"
     },
     "HG": {
-      "assetId": "HG",
-      "ma20": 0,
-      "ma60": 0,
-      "ma200": 0,
-      "mom12w": 0,
-      "rsToBenchmark": 1,
-      "vol20Ann": 0,
-      "mdd60": 0,
-      "mdd120": 0,
-      "volPercentile1y": 50,
-      "ddPercentile1y": 50,
-      "correlationDXY": 0,
-      "correlationRealRate": 0,
-      "correlationSPX": 0
+      "ma20": 36.4675,
+      "ma60": 33.797333333333334,
+      "ma200": 31.2834,
+      "mom12w": 21.433333333333326,
+      "vol20Ann": 39.97752688274691,
+      "mdd60": 5.889950917075694,
+      "mdd120": 5.889950917075694,
+      "volPercentile1y": 95.63492063492063,
+      "ddPercentile1y": 50.0,
+      "rsToBenchmark": 1.0,
+      "correlationDXY": 0.0,
+      "correlationRealRate": 0.0,
+      "correlationSPX": 0.0,
+      "assetId": "HG"
     }
   },
   "priceHistory": {}

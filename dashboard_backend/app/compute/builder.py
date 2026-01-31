@@ -12,7 +12,7 @@ from ..providers import fred as fred_prov
 from ..providers import price_chain as price_chain_prov
 from . import features as feat
 from . import scoring
-from . import regime as regime_mod
+from .regime import regime as compute_regime
 
 ASSET_DEFS = [
     {"id": "BTC", "name": "Bitcoin", "ticker": "BTC-USD", "assetType": "crypto", "currency": "USD", "benchmarkId": "QQQ", "baseMaxWeight": 0.25},
@@ -139,7 +139,7 @@ def build_payload() -> dict[str, Any]:
     dxy_chg = dxy.get("change1m")
 
     risk_val, risk_confidence, missing_macros = scoring.risk_score(hy, real10y, dxy, pmi, core_cpi)
-    reg_letter, reg_label = regime_mod.regime(hy, real10y, pmi, core_cpi, dxy, risk_val)
+    reg_letter, reg_label = compute_regime(hy, real10y, pmi, core_cpi, dxy, risk_val)
 
     drivers = []
     if hy.get("change1m") is not None and hy["change1m"] < 0:
