@@ -1,7 +1,7 @@
-"""
-Streamlit 版仪表盘：读取 dashboard.json 展示 Regime、宏观、资产与信号。
-本地运行: streamlit run streamlit_app.py
-云部署: 推送到 GitHub 后在 share.streamlit.io 新建 App，Main file 填 streamlit_app.py
+﻿"""
+Streamlit dashboard: read dashboard.json and render Daily / Asset / Weekly views.
+Run locally: streamlit run streamlit_app.py
+Deploy: set DASHBOARD_JSON_URL in Streamlit Secrets, or commit dashboard.json.
 """
 from __future__ import annotations
 
@@ -11,7 +11,6 @@ from pathlib import Path
 
 import streamlit as st
 
-# 默认 JSON 路径（相对仓库根）
 DEFAULT_JSON = Path(__file__).resolve().parent / "dashboard_frontend" / "app" / "public" / "data" / "dashboard.json"
 
 
@@ -41,69 +40,135 @@ def load_dashboard(path: Path | None = None) -> dict | None:
 def main() -> None:
     st.set_page_config(page_title="Investment Decision Dashboard", layout="wide")
     st.title("Investment Decision Dashboard")
-    st.caption("基于康波周期框架 · 数据来自 dashboard.json")
+    st.caption("Data source: dashboard.json")
 
     data = load_dashboard()
     if not data:
-        st.warning("未找到 dashboard.json。")
+        st.warning("dashboard.json not found.")
         st.info(
-            "**云部署时**：在 App 的 Secrets 里配置 `DASHBOARD_JSON_URL` = 你的 dashboard JSON 地址（如后端 `https://xxx/api/dashboard`），"
-            "或在本仓库中提交一份 `dashboard_frontend/app/public/data/dashboard.json`。"
+            "Set `DASHBOARD_JSON_URL` in Streamlit Secrets to your backend JSON endpoint, "
+            "or commit `dashboard_frontend/app/public/data/dashboard.json` to the repo."
         )
         return
 
     daily = data.get("dailySignal") or {}
     macros = data.get("macroSwitches") or []
+    macro_status = data.get("macroDataStatus") or {}
     assets = data.get("assets") or []
     signals = data.get("assetSignals") or []
+    weekly = data.get("weeklyKondratieff") or {}
+    tech = data.get("technicalData") or {}
+    data_status = data.get("dataStatus") or {}
 
-    # 当日信号
-    st.header("当日信号")
+    st.header("Daily Summary")
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("日期", daily.get("date", "-"))
+    c1.metric("Date", daily.get("date", "-"))
     c2.metric("Regime", daily.get("regime", "-"))
     c3.metric("RiskScore", daily.get("riskScore", "-"))
-    c4.metric("组合建议", daily.get("portfolioAction", "-"))
-    st.write("**驱动因素:**", ", ".join(daily.get("drivers") or []))
+    c4.metric("Portfolio Action", daily.get("portfolioAction", "-"))
+    st.write("**Drivers:**", ", ".join(daily.get("drivers") or []))
+    st.write("**Risk Mode:**", daily.get("riskMode", "-"))
     st.caption(daily.get("dataAsOf", ""))
 
-    # 宏观
-    st.header("宏观指标")
-    n = len(macros)
-    cols = st.columns(min(n, 5))
-    for i, m in enumerate(macros):
-        col = cols[i % len(cols)]
-        val = m.get("currentValue")
-        ch = m.get("change1m")
-        delta = f"{ch:+.2f}" if ch is not None and val is not None else None
-        col.metric(m.get("name", m.get("id")), f"{val}" if val is not None else "-", delta=delta)
+    st.header("Macro Switches")
+    if macros:
+        import pandas as pd
+        macro_rows = []
+        for m in macros:
+            mid = m.get("id")
+            stat = macro_status.get(mid, {})
+            macro_rows.append({
+                "Indicator": m.get("name", mid),
+                "Value": m.get("currentValue"),
+                "Change 7d": m.get("change7d"),
+                "Change 1m": m.get("change1m"),
+                "Percentile": m.get("percentile"),
+                "Light": m.get("light"),
+                "Freshness(days)": m.get("freshness"),
+                "Status OK": stat.get("ok"),
+            })
+        st.dataframe(pd.DataFrame(macro_rows), use_container_width=True, hide_index=True)
+    else:
+        st.write("No macro data.")
 
-    # 资产与信号
-    st.header("资产与信号")
+    st.header("Assets & Signals")
     if assets:
         import pandas as pd
         rows = []
         for a in assets:
             sig = next((s for s in signals if s.get("assetId") == a.get("id")), {})
+            st_meta = data_status.get(a.get("ticker"), {})
             rows.append({
-                "资产": a.get("name"),
-                "ticker": a.get("ticker"),
-                "价格": a.get("price"),
+                "Asset": a.get("name"),
+                "Ticker": a.get("ticker"),
+                "Price": a.get("price"),
                 "24h%": a.get("priceChange24h"),
                 "7d%": a.get("priceChange7d"),
                 "30d%": a.get("priceChange30d"),
-                "建议上限": a.get("suggestedMaxWeight"),
-                "趋势": sig.get("trendLight"),
-                "风险": sig.get("riskLight"),
-                "催化": sig.get("catalystLight"),
-                "操作": sig.get("action"),
+                "Max Weight": a.get("suggestedMaxWeight"),
+                "Trend": sig.get("trendLight"),
+                "Risk": sig.get("riskLight"),
+                "Catalyst": sig.get("catalystLight"),
+                "Action": sig.get("action"),
+                "Reason": ", ".join(sig.get("reasonCodes") or []),
+                "Data Provider": st_meta.get("provider"),
+                "Data Freshness": st_meta.get("freshness_days"),
             })
         st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
     else:
-        st.write("暂无资产数据。")
+        st.write("No asset data.")
+
+    st.header("Portfolio Summary")
+    if assets:
+        current_total = sum((a.get("currentWeight") or 0) for a in assets)
+        max_total = sum((a.get("suggestedMaxWeight") or 0) for a in assets)
+        st.metric("Current Total Weight", round(current_total, 4))
+        st.metric("Suggested Total Max", round(max_total, 4))
+        st.progress(min(1.0, current_total / max_total) if max_total else 0.0)
+
+    st.header("Weekly Kondratieff")
+    if weekly:
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("Date", weekly.get("date", "-"))
+        c2.metric("ADI", weekly.get("aiDiffusionIndex", "-"))
+        c3.metric("CI", weekly.get("constraintIndex", "-"))
+        c4.metric("Phase", weekly.get("phase", "-"))
+        st.write("**Strategy:**", weekly.get("strategy", "-"))
+        if weekly.get("chainInputMissing"):
+            st.warning(f"Chain input missing: {weekly.get('chainInputMissing')}")
+        comps = weekly.get("components") or {}
+        if comps:
+            st.dataframe(
+                pd.DataFrame([{"Component": k, "Value": v} for k, v in comps.items()]),
+                use_container_width=True,
+                hide_index=True,
+            )
+
+    st.header("Technical Snapshot")
+    if tech:
+        import pandas as pd
+        tech_rows = []
+        for aid, t in tech.items():
+            tech_rows.append({
+                "AssetId": aid,
+                "MA20": t.get("ma20"),
+                "MA60": t.get("ma60"),
+                "MA200": t.get("ma200"),
+                "Mom12w": t.get("mom12w"),
+                "Vol20Ann": t.get("vol20Ann"),
+                "MDD60": t.get("mdd60"),
+                "MDD120": t.get("mdd120"),
+                "VolPct1y": t.get("volPercentile1y"),
+                "DDPct1y": t.get("ddPercentile1y"),
+                "RS": t.get("rsToBenchmark"),
+                "CorrDXY": t.get("correlationDXY"),
+                "CorrRealRate": t.get("correlationRealRate"),
+                "CorrSPX": t.get("correlationSPX"),
+            })
+        st.dataframe(pd.DataFrame(tech_rows), use_container_width=True, hide_index=True)
 
     st.divider()
-    st.caption(f"生成时间: {data.get('generatedAt', '-')}")
+    st.caption(f"Generated at: {data.get('generatedAt', '-')}")
 
 
 if __name__ == "__main__":
